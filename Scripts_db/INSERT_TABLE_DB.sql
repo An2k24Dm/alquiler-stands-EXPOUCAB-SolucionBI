@@ -57,18 +57,27 @@ INSERT INTO SUBCATEGORIA (Sub_nb_subcategoria, Fk_categoria) VALUES
 INSERT INTO CLIENTE (Cli_nb_cliente, Cli_cedula, Cli_rif, Cli_telefono, Cli_direccion, Cli_email) VALUES
 ('DulceManía C.A.', 'J29876123', 'J-29876123-5', '02121234567', 'Caracas', 'contacto@dulcemania.com'),
 ('Moda Latina', 'J20887411', 'J-20887411-9', '02129998877', 'Caracas', 'ventas@modalatina.com'),
-('Burger House', 'J30011223', 'J-30011223-0', '02127654321', 'Caracas', 'info@burgerhouse.com');
+('Burger House', 'J30011223', 'J-30011223-0', '02127654321', 'Caracas', 'info@burgerhouse.com'),
+('TecnoPlus Store', 'J31245896', 'J-31245896-4', '02125556677', 'Valencia', 'ventas@tecnoplus.com'),
+('Arte Vivo', 'J28745123', 'J-28745123-8', '02123334455', 'El Hatillo', 'contacto@artevivo.com'),
+('Kids World', 'J33456987', 'J-33456987-1', '02129991122', 'Maracay', 'info@kidsworld.com');
 
 INSERT INTO VISITANTE (Vis_cedula, Vis_nb_visitante, Vis_sexo, Vis_email) VALUES
 ('14523698', 'José León', 'M', 'jleon@gmail.com'),
 ('19874563', 'Ana Villalba', 'F', 'ana.villalba@gmail.com'),
 ('20458963', 'Marcos Rivero', 'M', 'marcos.rivero@gmail.com'),
-('18645239', 'Laura Rodriguez', 'F', 'laurar@gmail.com');
+('18645239', 'Laura Rodriguez', 'F', 'laurar@gmail.com'),
+('21548963', 'Carlos Méndez', 'M', 'cmendez@gmail.com'),
+('17456321', 'Patricia Gómez', 'F', 'pgomez@gmail.com'),
+('22987456', 'Luis Fernández', 'M', 'lfernandez@gmail.com'),
+('19321456', 'María Salazar', 'F', 'msalazar@gmail.com');
 
 INSERT INTO EVENTO (Eve_nb_evento, Eve_fecha_inicio, Eve_fecha_fin, Eve_descripcion, Eve_email, Fk_tipo_evento, Fk_sede) VALUES
 ('Feria de Comida Caracas 2025', '2025-03-10', '2025-03-12', 'Feria gastronómica con comida tradicional y gourmet', 'info@feriacomida.com', 1, 1),
 ('Bazar Artesanal El Hatillo 2025', '2025-04-20', '2025-04-22', 'Bazar de artesanías, ropa y accesorios', 'contacto@bazarhatillo.com', 2, 2),
-('Expo Deportes Galipán 2025', '2025-05-15', '2025-05-17', 'Exposición de artículos deportivos y actividades recreativas', 'expodeportes@galipan.com', 3, 3);
+('Expo Deportes Galipán 2025', '2025-05-15', '2025-05-17', 'Exposición de artículos deportivos y actividades recreativas', 'expodeportes@galipan.com', 3, 3),
+('Expo Tecnología Valencia 2025', '2025-06-10', '2025-06-12', 'Exposición de innovación y tecnología', 'info@expotecno.com', 3, 6),
+('Feria Infantil Maracay 2025', '2025-07-05', '2025-07-07', 'Feria dedicada a productos y servicios infantiles', 'contacto@feriainfantil.com', 1, 5);
 
 INSERT INTO EVENTO_STAND (Fk_evento, Fk_tipo_stand, Evs_cantidad_estimada, Evs_mts_cuadrados_stand, Evs_precio) VALUES
 (1, 1, 20, 6, 500),
@@ -79,7 +88,13 @@ INSERT INTO EVENTO_STAND (Fk_evento, Fk_tipo_stand, Evs_cantidad_estimada, Evs_m
 (2, 3, 5, 15, 1000),
 (3, 1, 30, 6, 500),
 (3, 2, 15, 12, 800),
-(3, 3, 8, 15, 1000);
+(3, 3, 8, 15, 1000),
+(4, 1, 20, 6, 500),
+(4, 2, 15, 12, 800),
+(4, 3, 8, 15, 1000),
+(5, 1, 18, 6, 500),
+(5, 2, 12, 12, 800),
+(5, 3, 6, 15, 1000);
 
 INSERT INTO CONTRATO (Con_fecha_alquiler, Con_mts_cuadrados_adicionales, Con_monto, Fk_cliente, Fk_evento, Fk_subcategoria, Fk_tipo_stand) VALUES
 ('2025-02-15', 0, 500, 1, 1, 1, 1),
@@ -87,10 +102,18 @@ INSERT INTO CONTRATO (Con_fecha_alquiler, Con_mts_cuadrados_adicionales, Con_mon
 ('2025-03-01', 0, 500, 3, 1, 2, 1),
 ('2025-04-01', 0, 800, 2, 2, 3, 2),
 ('2025-04-05', 3, 1450, 1, 2, 1, 3),
-('2025-05-01', 0, 800, 3, 3, 5, 2);
+('2025-05-01', 0, 800, 3, 3, 5, 2),
+('2025-05-20', 0, 500, 4, 4, 5, 1),
+('2025-05-22', 2, 1300, 5, 4, 7, 3),
+('2025-06-01', 0, 800, 6, 5, 9, 2),
+('2025-06-03', 4, 1500, 1, 5, 10, 3);
 
 INSERT INTO ENTRADA (Ent_fecha_entrada, Ent_hora_entrada, Ent_recomienda_amigo, Ent_calificacion, Fk_evento, Fk_visitante, Fk_leyenda_estrella) VALUES
 ('2025-03-10', '10:15', TRUE, 5, 1, 1, 5),
 ('2025-03-10', '13:40', TRUE, 4, 1, 2, 4),
 ('2025-04-20', '11:00', FALSE, 3, 2, 3, 3),
-('2025-05-15', '14:30', TRUE, 5, 3, 4, 5);
+('2025-05-15', '14:30', TRUE, 5, 3, 4, 5),
+('2025-06-10', '09:30', TRUE, 5, 4, 5, 5),
+('2025-06-10', '12:45', FALSE, 4, 4, 6, 4),
+('2025-07-05', '10:00', TRUE, 5, 5, 7, 5),
+('2025-07-06', '15:20', TRUE, 4, 5, 8, 4);
