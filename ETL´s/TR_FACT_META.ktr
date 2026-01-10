@@ -626,6 +626,10 @@
         <attribute>N</attribute>
       </attribute>
       <attribute>
+        <code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
         <code>PORT_NUMBER</code>
         <attribute>5432</attribute>
       </attribute>
@@ -868,150 +872,6 @@
     </GUI>
   </step>
   <step>
-    <name>obtener sk_fecha</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>dim_tiempo_1</connection>
-    <cache>N</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>public</schema>
-      <table>DIM_TIEMPO</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>fecha_evento</name>
-        <field>fecha</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>sk_tiempo</name>
-        <rename>sk_fecha_evento</rename>
-        <default/>
-        <type>Date</type>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>944</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Obtener sk_evento</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>dim_evento</connection>
-    <cache>N</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>public</schema>
-      <table>DIM_EVENTO</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>cod_evento</name>
-        <field>cod_evento</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>sk_evento</name>
-        <rename>sk_evento</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1072</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Obtener sk_sede</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>dim_sede</connection>
-    <cache>N</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>public</schema>
-      <table>DIM_SEDE</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>cod_sede</name>
-        <field>cod_sede</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>sk_sede</name>
-        <rename>sk_sede</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1216</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Dummy (do nothing)</name>
     <type>Dummy</type>
     <description/>
@@ -1121,6 +981,182 @@
     <GUI>
       <xloc>112</xloc>
       <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Insert / update</name>
+    <type>InsertUpdate</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>f_meta</connection>
+    <commit>100</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema>public</schema>
+      <table>FACT_META</table>
+      <key>
+        <name>sk_fecha_evento</name>
+        <field>sk_fecha_evento</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>sk_evento</name>
+        <field>sk_evento</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>sk_sede</name>
+        <field>sk_sede</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>sk_evento</name>
+        <rename>sk_evento</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>sk_sede</name>
+        <rename>sk_sede</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>sk_fecha_evento</name>
+        <rename>sk_fecha_evento</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>nro_stands_propuestos</name>
+        <rename>nro_stands_propuestos</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>cantidad_estim_visitantes</name>
+        <rename>cantidad_estim_visitantes</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>meta_ingreso</name>
+        <rename>meta_ingreso</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1328</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Obtener sk_evento</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>dim_evento</connection>
+    <cache>N</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>public</schema>
+      <table>DIM_EVENTO</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>cod_evento</name>
+        <field>cod_evento</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>sk_evento</name>
+        <rename>sk_evento</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1072</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Obtener sk_sede</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>dim_sede</connection>
+    <cache>N</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>public</schema>
+      <table>DIM_SEDE</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>cod_sede</name>
+        <field>cod_sede</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>sk_sede</name>
+        <rename>sk_sede</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1216</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1650,8 +1686,8 @@ GROUP BY e.eve_cod_evento, e.fk_sede, e.eve_fecha_inicio;
     </GUI>
   </step>
   <step>
-    <name>Insert / update</name>
-    <type>InsertUpdate</type>
+    <name>obtener sk_fecha</name>
+    <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1660,59 +1696,27 @@ GROUP BY e.eve_cod_evento, e.fk_sede, e.eve_fecha_inicio;
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>f_meta</connection>
-    <commit>100</commit>
-    <update_bypassed>N</update_bypassed>
+    <connection>dim_tiempo_1</connection>
+    <cache>N</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
     <lookup>
       <schema>public</schema>
-      <table>FACT_META</table>
+      <table>DIM_TIEMPO</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>sk_fecha_evento</name>
-        <field>sk_fecha_evento</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>sk_evento</name>
-        <field>sk_evento</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>sk_sede</name>
-        <field>sk_sede</field>
+        <name>fecha_evento</name>
+        <field>fecha</field>
         <condition>=</condition>
         <name2/>
       </key>
       <value>
-        <name>sk_evento</name>
-        <rename>sk_evento</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>sk_sede</name>
-        <rename>sk_sede</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>sk_fecha_evento</name>
+        <name>sk_tiempo</name>
         <rename>sk_fecha_evento</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>nro_stands_propuestos</name>
-        <rename>nro_stands_propuestos</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>cantidad_estim_visitantes</name>
-        <rename>cantidad_estim_visitantes</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>meta_ingreso</name>
-        <rename>meta_ingreso</rename>
-        <update>Y</update>
+        <default/>
+        <type>Date</type>
       </value>
     </lookup>
     <attributes/>
@@ -1724,7 +1728,7 @@ GROUP BY e.eve_cod_evento, e.fk_sede, e.eve_fecha_inicio;
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1328</xloc>
+      <xloc>944</xloc>
       <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
