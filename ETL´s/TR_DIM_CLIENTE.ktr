@@ -647,12 +647,12 @@
       </value>
       <value>
         <name>ci_rif</name>
-        <rename>nb_cliente</rename>
+        <rename>ci_rif</rename>
         <update>Y</update>
       </value>
       <value>
         <name>nb_cliente</name>
-        <rename>cli_rif</rename>
+        <rename>nb_cliente</rename>
         <update>Y</update>
       </value>
       <value>
