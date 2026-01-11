@@ -65,7 +65,12 @@ INSERT INTO CLIENTE (Cli_nb_cliente, Cli_cedula, Cli_rif, Cli_telefono, Cli_dire
 ('Urban Style', 'J36547891', 'J-36547891-6', '02128889977', 'Sebucán', 'ventas@urbanstyle.com'),
 ('Fit Zone', 'J38965412', 'J-38965412-0', '02123332211', 'Valencia', 'info@fitzone.com'),
 ('Casa & Deco', 'J31256987', 'J-31256987-9', '02126667788', 'Maracay', 'contacto@casadeco.com'),
-('Smart Gadgets', 'J39874125', 'J-39874125-4', '02129994433', 'Caracas', 'ventas@smartgadgets.com');
+('Smart Gadgets', 'J39874125', 'J-39874125-4', '02129994433', 'Caracas', 'ventas@smartgadgets.com'),
+('Green Smoothies', 'J40122334', 'J-40122334-2', '02125550101', 'Caracas', 'contacto@greensmoothies.com'),
+('TechZone Valencia', 'J40233445', 'J-40233445-0', '02412223344', 'Valencia', 'ventas@techzonevalencia.com'),
+('Moda Kids', 'J40344556', 'J-40344556-8', '02127778899', 'Caracas', 'info@modakids.com'),
+('Arte & Color Studio', 'J40455667', 'J-40455667-6', '02121239988', 'El Hatillo', 'contacto@arteycolor.com'),
+('Hogar Plus', 'J40566778', 'J-40566778-4', '02434445566', 'Maracay', 'ventas@hogarplus.com');
 
 INSERT INTO VISITANTE (Vis_cedula, Vis_nb_visitante, Vis_sexo, Vis_email) VALUES
 ('14523698', 'José León', 'M', 'jleon@gmail.com'),
@@ -83,14 +88,27 @@ INSERT INTO VISITANTE (Vis_cedula, Vis_nb_visitante, Vis_sexo, Vis_email) VALUES
 ('19358742', 'Ricardo Figueroa', 'M', 'rfigueroa@gmail.com'),
 ('22874196', 'Natalia Suárez', 'F', 'natalia.suarez@gmail.com'),
 ('16745982', 'Miguel Torres', 'M', 'miguel.torres@gmail.com'),
-('25469871', 'Paola Castillo', 'F', 'paola.castillo@gmail.com');
+('25469871', 'Paola Castillo', 'F', 'paola.castillo@gmail.com'),
+('17654321', 'Evelyn Márquez', 'F', 'evelyn.marquez@gmail.com'),
+('23456789', 'Jorge Ramírez', 'M', 'jorge.ramirez@gmail.com'),
+('20123456', 'Camila Herrera', 'F', 'camila.herrera@gmail.com'),
+('19567890', 'Fernando Silva', 'M', 'fernando.silva@gmail.com'),
+('21876543', 'Gabriela Núñez', 'F', 'gabriela.nunez@gmail.com'),
+('18765432', 'Roberto Sánchez', 'M', 'roberto.sanchez@gmail.com');
 
 INSERT INTO EVENTO (Eve_nb_evento, Eve_fecha_inicio, Eve_fecha_fin, Eve_descripcion, Eve_email, Fk_tipo_evento, Fk_sede) VALUES
 ('Feria de Comida Caracas 2025', '2025-03-10', '2025-03-12', 'Feria gastronómica con comida tradicional y gourmet', 'info@feriacomida.com', 1, 1),
 ('Bazar Artesanal El Hatillo 2025', '2025-04-20', '2025-04-22', 'Bazar de artesanías, ropa y accesorios', 'contacto@bazarhatillo.com', 2, 2),
 ('Expo Deportes Galipán 2025', '2025-05-15', '2025-05-17', 'Exposición de artículos deportivos y actividades recreativas', 'expodeportes@galipan.com', 3, 3),
 ('Expo Tecnología Valencia 2025', '2025-06-10', '2025-06-12', 'Exposición de innovación y tecnología', 'info@expotecno.com', 3, 6),
-('Feria Infantil Maracay 2025', '2025-07-05', '2025-07-07', 'Feria dedicada a productos y servicios infantiles', 'contacto@feriainfantil.com', 1, 5);
+('Feria Infantil Maracay 2025', '2025-07-05', '2025-07-07', 'Feria dedicada a productos y servicios infantiles', 'contacto@feriainfantil.com', 1, 5),
+('Expo Belleza Caracas 2025', '2025-08-10', '2025-08-12', 'Exposición de productos y servicios de belleza', 'info@expobelleza.com', 3, 4),
+('Feria Gastronómica Valencia 2025', '2025-09-05', '2025-09-07', 'Feria de comida nacional e internacional', 'contacto@feriagastrovalencia.com', 1, 6),
+('Bazar Creativo Sebucán 2025', '2025-10-15', '2025-10-17', 'Bazar de arte, diseño y emprendimientos creativos', 'info@bazarcreativo.com', 2, 4),
+('Feria Gourmet Las Mercedes 2026', '2026-01-01', '2026-01-05', 'Feria gastronómica premium', 'info@feriagourmet.com', 1, 1),
+('Bazar Arte y Artesanía El Hatillo 2026', '2026-01-05', '2026-01-10', 'Bazar creativo y artesanal', 'contacto@bazararte.com', 2, 2),
+('Expo Tecnología Valencia 2026', '2026-01-03', '2026-01-11', 'Exposición de innovación tecnológica', 'info@expotecvalencia.com', 3, 6),
+('Feria Kids Maracay 2026', '2026-01-11', '2026-01-12', 'Feria de productos infantiles', 'contacto@feriakids.com', 1, 5);
 
 INSERT INTO EVENTO_STAND (Fk_evento, Fk_tipo_stand, Evs_cantidad_estimada, Evs_mts_cuadrados_stand, Evs_precio) VALUES
 (1, 1, 20, 6, 500),
@@ -107,7 +125,28 @@ INSERT INTO EVENTO_STAND (Fk_evento, Fk_tipo_stand, Evs_cantidad_estimada, Evs_m
 (4, 3, 8, 15, 1000),
 (5, 1, 18, 6, 500),
 (5, 2, 12, 12, 800),
-(5, 3, 6, 15, 1000);
+(5, 3, 6, 15, 1000),
+(6, 1, 18, 6, 500),
+(6, 2, 12, 12, 800),
+(6, 3, 8, 15, 1000),
+(7, 1, 22, 6, 500),
+(7, 2, 15, 12, 800),
+(7, 3, 10, 15, 1000),
+(8, 1, 20, 6, 500),
+(8, 2, 14, 12, 800),
+(8, 3, 6, 15, 1000),
+(9, 1, 20, 6, 500),
+(9, 2, 14, 12, 800),
+(9, 3, 10, 15, 1000),
+(10, 1, 24, 6, 500),
+(10, 2, 12, 12, 800),
+(10, 3, 6, 15, 1000),
+(11, 1, 18, 6, 500),
+(11, 2, 16, 12, 800),
+(11, 3, 12, 15, 1000),
+(12, 1, 22, 6, 500),
+(12, 2, 10, 12, 800),
+(12, 3, 7, 15, 1000);
 
 INSERT INTO CONTRATO (Con_fecha_alquiler, Con_mts_cuadrados_adicionales, Con_monto, Fk_cliente, Fk_evento, Fk_subcategoria, Fk_tipo_stand) VALUES
 ('2025-02-15', 0, 500, 1, 1, 1, 1),
@@ -127,7 +166,21 @@ INSERT INTO CONTRATO (Con_fecha_alquiler, Con_mts_cuadrados_adicionales, Con_mon
 ('2025-04-10', 0, 500, 11, 3, 6, 1),
 ('2025-04-12', 3, 1450, 6, 3, 7, 3),
 ('2025-05-08', 0, 800, 5, 4, 9, 2),
-('2025-05-12', 4, 1500, 4, 4, 10, 3);
+('2025-05-12', 4, 1500, 4, 4, 10, 3),
+('2025-07-20', 0, 800, 8, 6, 6, 2),
+('2025-07-22', 2, 1300, 11, 6, 6, 3),
+('2025-08-01', 0, 500, 1, 7, 1, 1),
+('2025-08-03', 3, 1450, 3, 7, 8, 3),
+('2025-09-20', 0, 800, 2, 8, 7, 2),
+('2025-09-22', 1, 1150, 6, 8, 7, 3),
+('2026-01-05', 0, 800, 15, 9, 8, 2),
+('2026-01-01', 2, 1300, 16, 9, 1, 3),
+('2026-01-05', 0, 500, 15, 10, 7, 1),
+('2026-01-07', 3, 1450, 14, 10, 10, 3),
+('2026-01-03', 0, 800, 11, 11, 5, 2),
+('2026-01-08', 4, 1500, 5, 11, 5, 3),
+('2026-01-11', 0, 500, 6, 12, 9, 1),
+('2026-01-12', 1, 1150, 16, 12, 10, 3);
 
 INSERT INTO ENTRADA (Ent_fecha_entrada, Ent_hora_entrada, Ent_recomienda_amigo, Ent_calificacion, Fk_evento, Fk_visitante, Fk_leyenda_estrella) VALUES
 ('2025-03-10', '10:15', TRUE, 10, 1, 1, 5),
@@ -145,4 +198,21 @@ INSERT INTO ENTRADA (Ent_fecha_entrada, Ent_hora_entrada, Ent_recomienda_amigo, 
 ('2025-05-16', '09:50', TRUE, 9, 3, 13, 4),
 ('2025-05-17', '13:15', FALSE, 3, 3, 14, 2),
 ('2025-06-11', '12:00', TRUE, 9, 4, 15, 5),
-('2025-07-06', '16:10', TRUE, 7, 5, 16, 4);
+('2025-07-06', '16:10', TRUE, 7, 5, 16, 4),
+('2025-08-10', '10:30', TRUE, 5, 6, 4, 3),
+('2025-08-11', '14:10', TRUE, 4, 6, 6, 2),
+('2025-09-05', '11:00', TRUE, 9, 7, 5, 5),
+('2025-09-06', '16:40', FALSE, 3, 7, 10, 2),
+('2025-10-15', '09:45', TRUE, 4, 8, 11, 3),
+('2025-10-16', '15:30', TRUE, 10, 8, 8, 5),
+('2025-10-16', '15:30', TRUE, 1, 8, 1, 1),
+('2025-10-16', '15:30', TRUE, 5, 8, 7, 3),
+('2025-10-16', '15:30', TRUE, 7, 8, 5, 4),
+('2026-01-01', '10:20', TRUE, 5, 9, 20, 3),
+('2026-01-03', '13:35', TRUE, 7, 9, 16, 4),
+('2026-01-05', '11:10', FALSE, 6, 10, 17, 4),
+('2026-01-06', '16:05', TRUE, 2, 10, 18, 1),
+('2026-01-04', '09:50', TRUE, 8, 11, 19, 5),
+('2026-01-10', '14:45', TRUE, 8, 11, 21, 4),
+('2026-01-11', '10:05', TRUE, 3, 12, 22, 2),
+('2026-01-11', '15:25', TRUE, 9, 12, 17, 5);
